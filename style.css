@@ -22,6 +22,10 @@
 body {
     font-family: 'Kumbh Sans', sans-serif;
     padding: 2rem 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 header {
@@ -53,6 +57,7 @@ nav {
     transition: color 250ms ease-out;
     display: inline-block;
     position: relative;
+    font-size: clamp(0.875rem, 0.126vw + 0.85rem, 1rem);
 }
 
 .nav-catergories a::after {
@@ -109,6 +114,10 @@ nav {
     transition: outline 150ms ease-out;
 }
 
+.profileBtn:focus-visible {
+    outline: 2px solid var(--black);
+}
+
 .profileBtn:hover {
     outline: 2px solid var(--orange);
     transition: outline 250ms ease;
@@ -124,18 +133,18 @@ main {
     align-items: center;
     justify-content: center;
     gap: 4rem;
-    padding: 4rem 2rem;
+    padding: clamp(2rem, 11.765vw - 6.824rem, 4rem) clamp(0rem, 11.765vw - 8.824rem, 2rem);
 }
 
 .product-images {
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    max-width: 32rem;
     gap: 2rem;
 }
 
 .main-image {
-    max-width: 32rem;
+    max-width: 100%;
     border-radius: 1rem;
 }
 
@@ -143,10 +152,21 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 1rem;
 }
 
-.preview-images img {
-    max-width: 6rem;
+.previewImgBtn {
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.preview-image {
+    max-width: 100%;
     border-radius: 1rem;
 }
 
@@ -160,6 +180,7 @@ main {
     font-weight: 700;
     letter-spacing: 2px;
     margin-block-end: 1rem;
+    font-size: clamp(0.875rem, 0.126vw + 0.85rem, 1rem);
 }
 
 .product-title {
@@ -167,12 +188,15 @@ main {
     font-weight: 700;
     line-height: 1;
     color: var(--veryDarkBlue);
-    margin-block-end: 3rem;
+    margin-block-end: 2.5rem; /* add clamp to change to 1rem when it hits the mobile screen */
+    font-size: clamp(3.063rem, 0.44vw + 2.975rem, 3.5rem);
 }
 
 .product-description {
     color: var(--darkGrayishBlue);
     margin-block-end: 1rem;
+    font-size: clamp(0.875rem, 0.126vw + 0.85rem, 1rem);
+    line-height: clamp(1.7rem, -0.05vw + 1.76rem, 1.75rem);
 }
 
 .product-pricing {
@@ -191,7 +215,7 @@ main {
 
 .discounted-price {
     color: var(--veryDarkBlue);
-    font-size: 2rem;
+    font-size: clamp(1.75rem, 0.251vw + 1.7rem, 2rem);
     font-weight: 700;
 }
 
@@ -201,11 +225,12 @@ main {
     border-radius: 0.625rem;
     color: var(--white);
     font-weight: 700;
+    font-size: clamp(0.875rem, 0.126vw + 0.85rem, 1rem);
 }
 
 .normal-price {
     text-decoration: line-through;
-    font-size: large;
+    font-size: clamp(1.094rem, 0.157vw + 1.062rem, 1.25rem);
     color: var(--darkGrayishBlue);
     font-weight: 700;
 }
@@ -228,7 +253,7 @@ main {
     color: var(--veryDarkBlue);
     width: 35%;
     text-align: center;
-    font-size: large;
+    font-size: clamp(1.094rem, 0.157vw + 1.062rem, 1.25rem);
     font-weight: 700;
 }
 
@@ -253,7 +278,7 @@ main {
     justify-content: center;
     gap: 1rem;
     font-family: 'Kumbh Sans', sans-serif;
-    font-size: large;
+    font-size: clamp(1.094rem, 0.157vw + 1.062rem, 1.25rem);
     font-weight: 700;
     border-radius: 0.625rem;
     background-color: var(--orange);
@@ -273,3 +298,62 @@ main {
 .cart {
     fill: var(--veryDarkBlue);
 }
+
+@media only screen and (max-width: calc(75rem - 1px)) {
+    main {
+        flex-direction: column;
+    }
+
+    .product-images {
+        flex-direction: row;
+        max-width: none;
+    }
+
+    .main-image {
+        max-width: none; 
+        width: 35rem;
+    }
+
+    .preview-images {
+        flex-direction: column;
+        justify-content: space-between;
+        width: 8rem;
+    }
+}
+
+/*
+.product-images {
+    display: flex;
+    flex-direction: column;
+    max-width: 32rem;
+    gap: 2rem;
+}
+
+.main-image {
+    max-width: 100%;
+    border-radius: 1rem;
+}
+
+.preview-images {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.previewImgBtn {
+    flex: 1;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.preview-image {
+    max-width: 100%;
+    border-radius: 1rem;
+}
+*/
