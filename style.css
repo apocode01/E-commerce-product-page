@@ -3,6 +3,7 @@
 
 :root {
     --orange: hsl(26, 100%, 55%);
+    --lightOrange : hsl(27, 100%, 71%);
     --paleOrange: hsl(25, 100%, 94%);
     --veryDarkBlue: hsl(220, 13%, 13%);
     --darkGrayishBlue: hsl(219, 9%, 45%);
@@ -49,6 +50,31 @@ nav {
 .nav-catergories a {
     text-decoration: none;
     color: var(--darkGrayishBlue);
+    transition: color 250ms ease-out;
+    display: inline-block;
+    position: relative;
+}
+
+.nav-catergories a::after {
+    content: "";
+    position: absolute;
+    background-color: var(--orange);
+    height: 3px;
+    left: 0;
+    width: 100%;
+    bottom: -54px;
+    transform: scaleX(0);
+    transition: transform 250ms ease-out;
+}
+
+.nav-catergories a:hover {
+    color: var(--veryDarkBlue);
+    transition: color 250ms ease;
+}
+
+.nav-catergories a:hover::after {
+    transform: scaleX(1);
+    transition: transform 250ms ease;
 }
 
 .cart-and-profile {
@@ -58,13 +84,34 @@ nav {
     gap: 3rem;
 }
 
-.cartBtn, .decreaseBtn, .increaseBtn {
+.cartBtn, .decreaseBtn, .increaseBtn, .profileBtn {
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     background-color: transparent;
     cursor: pointer;
+}
+
+.cartBtn path {
+    fill: var(--darkGrayishBlue);
+    transition: all 250ms ease-out;
+}
+
+.cartBtn:hover path {
+    fill: var(--veryDarkBlue);
+    transition: all 250ms ease;
+}
+
+.profileBtn {
+    border-radius: 50%;
+    outline: 2px solid transparent;
+    transition: outline 150ms ease-out;
+}
+
+.profileBtn:hover {
+    outline: 2px solid var(--orange);
+    transition: outline 250ms ease;
 }
 
 .avatar {
@@ -185,6 +232,20 @@ main {
     font-weight: 700;
 }
 
+.decreaseBtn path, .increaseBtn path {
+    transition: all 250ms ease-out;
+}
+
+.decreaseBtn:hover path {
+    fill: var(--lightOrange);
+    transition: all 250ms ease;
+}
+
+.increaseBtn:hover path {
+    fill: var(--lightOrange);
+    transition: all 250ms ease;
+}
+
 .add-to-cart-btn {
     display: flex;
     flex-direction: row;
@@ -200,6 +261,13 @@ main {
     width: 65%;
     justify-content: center;
     border: none;
+    cursor: pointer;
+    transition: all 250ms ease-out;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--lightOrange);
+    transition: all 250ms ease;
 }
 
 .cart {
