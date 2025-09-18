@@ -36,19 +36,24 @@
 
     <main>
       <div class="product-images">
-        <img class="main-image" src="images/image-product-1.jpg">
+        <button aria-label="view main image" class="mainImgBtn" type="button">
+            <img class="main-image" src="images/image-product-1.jpg" alt="Sneaker sole view">
+            <img class="main-image hidden" src="images/image-product-2.jpg" alt="Pair of beige sneakers">
+            <img class="main-image hidden" src="images/image-product-3.jpg" alt="Sneaker on stacked stones">
+            <img class="main-image hidden" src="images/image-product-4.jpg" alt="Sneaker on rocks">
+        </button>
         <div class="preview-images">
-          <button aria-label="view preview image" class="previewImgBtn" type="button">
-            <img class="preview-image" src="images/image-product-1.jpg">
+          <button aria-label="view preview image" class="previewImgBtn selected" type="button">
+            <img class="preview-image" src="images/image-product-1.jpg" alt="Sneaker sole view">
           </button>
           <button aria-label="view preview image" class="previewImgBtn" type="button">
-            <img class="preview-image" src="images/image-product-2.jpg">
+            <img class="preview-image" src="images/image-product-2.jpg" alt="Pair of beige sneakers">
           </button>
           <button aria-label="view preview image" class="previewImgBtn" type="button">
-            <img class="preview-image" src="images/image-product-3.jpg">
+            <img class="preview-image" src="images/image-product-3.jpg" alt="Sneaker on stacked stones">
           </button>
           <button aria-label="view preview image" class="previewImgBtn" type="button">
-            <img class="preview-image" src="images/image-product-4.jpg">
+            <img class="preview-image" src="images/image-product-4.jpg" alt="Sneaker on rocks">
           </button>
         </div>
       </div>
@@ -93,5 +98,7 @@
       </div>
     </main>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
