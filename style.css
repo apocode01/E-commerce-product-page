@@ -90,7 +90,7 @@ nav {
     gap: 3rem;
 }
 
-.cartBtn, .decreaseBtn, .increaseBtn, .profileBtn {
+.deleteItemBtn, .cartBtn, .decreaseBtn, .increaseBtn, .profileBtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,6 +107,95 @@ nav {
 .cartBtn:hover path {
     fill: var(--veryDarkBlue);
     transition: all 250ms ease;
+}
+
+.cart-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* horizontally center children */
+}
+
+.products-in-cart {
+    position: absolute;
+    background-color: var(--white);
+    padding: 1rem;
+    border-radius: 0.625rem;
+    top: calc(100% + 2rem);
+    width: 23rem;
+    height: 9.25rem;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 250ms ease-out;
+}
+
+.products-in-cart.shown {
+    opacity: 1;
+    transition: opacity 250ms ease;
+}
+
+.cart-heading {
+    font-size: clamp(0.875rem, 0.126vw + 0.85rem, 1rem);
+    font-weight: 700;
+    padding-block-end: 1rem;
+}
+
+.cart-line {
+    border: none;
+    height: 1px;
+    background-color: var(--grayishBlue);
+    margin-inline-start: -1rem;
+    margin-inline-end: -1rem;
+    margin-block-end: 1rem;
+}
+
+.product-cart-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-cart-amount {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.product-cart-amount.hidden {
+    display: none;
+}
+
+.product-cart-img {
+    height: 4rem;
+    border-radius: 0.625rem;
+}
+
+.product-cart-checkout-details {
+    font-size: clamp(0.875rem, 0.126vw + 0.85rem, 1rem);
+    color: var(--darkGrayishBlue);
+}
+
+.deleteItemBtn path {
+    fill: var(--darkGrayishBlue);
+    transition: all 250ms ease-out;
+}
+
+.deleteItemBtn:hover path {
+    fill: var(--veryDarkBlue);
+    transition: all 250ms ease;
+}
+
+.cart-empty-message {
+    color: var(--darkGrayishBlue);
+    font-weight: 700;
+}
+
+.cart-empty-message.hidden {
+    display: none;
 }
 
 .profileBtn {
