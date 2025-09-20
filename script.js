@@ -1,3 +1,5 @@
+// Image gallery functionality
+
 const mainImages = document.querySelectorAll(`.main-image`);
 const previewImgButtons = document.querySelectorAll(`.previewImgBtn`);
 const previewImages = document.querySelectorAll(`.preview-image`);
@@ -19,10 +21,18 @@ previewImgButtons.forEach((previewImageBtn, index) => {
     })
 })
 
+// Product amount selection and cart menu functionality
+
 const decreaseBtn = document.querySelector(`.decreaseBtn`);
 const increaseBtn = document.querySelector(`.increaseBtn`);
 const selectedProductAmountSpan = document.querySelector(`.selected-product-amount`);
 const addToCartBtn = document.querySelector(`.add-to-cart-btn`);
+const productCartWrapper = document.querySelector(`.product-cart-wrapper`);
+const cartEmptyMessage = document.querySelector(`.cart-empty-message`);
+const productPricingCartInfo = document.querySelector(`.product-pricing-cart-info`);
+const cartBtn = document.querySelector(`.cartBtn`);
+const cartMenu = document.querySelector(`.cart-menu`);
+const deleteItemBtn = document.querySelector(`.deleteItemBtn`);
 let selectedProductAmount = 0;
 let productAmount = 0;
 
@@ -40,18 +50,20 @@ increaseBtn.addEventListener(`click`, () => {
 
 addToCartBtn.addEventListener(`click`, () => {
     productAmount += selectedProductAmount;
-    console.log(productAmount);
+    if (productAmount >= 1) {
+        productCartWrapper.classList.remove(`hidden`);
+        cartEmptyMessage.classList.add(`hidden`);
+        let totalProductPricing = (productAmount * 125).toFixed(2);
+        productPricingCartInfo.innerHTML = `$125.00 x ${productAmount} <span style="font-weight: 700; color: var(--veryDarkBlue);">$${totalProductPricing}`;
+    }
 })
-
-const cartBtn = document.querySelector(`.cartBtn`);
-const cartMenu = document.querySelector(`.products-in-cart`);
 
 cartBtn.addEventListener(`click`, () => {
     cartMenu.classList.toggle(`shown`);
 })
 
-const deleteItemBtn = document.querySelector(`.deleteItemBtn`);
-
 deleteItemBtn.addEventListener(`click`, () => {
-    console.log("delete");
+    productAmount = 0;
+    productCartWrapper.classList.add(`hidden`);
+    cartEmptyMessage.classList.remove(`hidden`);
 })

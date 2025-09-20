@@ -116,21 +116,20 @@ nav {
     align-items: center; /* horizontally center children */
 }
 
-.products-in-cart {
+.cart-menu {
     position: absolute;
     background-color: var(--white);
     padding: 1rem;
     border-radius: 0.625rem;
     top: calc(100% + 2rem);
     width: 23rem;
-    height: 9.25rem;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
     z-index: 1;
     opacity: 0;
     transition: opacity 250ms ease-out;
 }
 
-.products-in-cart.shown {
+.cart-menu.shown {
     opacity: 1;
     transition: opacity 250ms ease;
 }
@@ -155,18 +154,27 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 8.5rem;
 }
 
-.product-cart-amount {
+.product-cart-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
 }
 
-.product-cart-amount.hidden {
+.product-cart-wrapper.hidden {
     display: none;
+}
+
+.product-in-display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .product-cart-img {
@@ -179,6 +187,10 @@ nav {
     color: var(--darkGrayishBlue);
 }
 
+.product-pricing-cart-info {
+    word-spacing: 3px;
+}
+
 .deleteItemBtn path {
     fill: var(--darkGrayishBlue);
     transition: all 250ms ease-out;
@@ -186,6 +198,26 @@ nav {
 
 .deleteItemBtn:hover path {
     fill: var(--veryDarkBlue);
+    transition: all 250ms ease;
+}
+
+.checkoutBtn {
+    padding: 1rem;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: clamp(0.984rem, 0.141vw + 0.956rem, 1.125rem);
+    font-weight: 700;
+    border-radius: 0.625rem;
+    background-color: var(--orange);
+    color: var(--veryDarkBlue);
+    width: 100%;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 250ms ease-out;
+}
+
+.checkoutBtn:hover {
+    background-color: var(--lightOrange);
     transition: all 250ms ease;
 }
 
@@ -375,7 +407,7 @@ main {
     color: var(--veryDarkBlue);
     width: 35%;
     text-align: center;
-    font-size: clamp(1.094rem, 0.157vw + 1.062rem, 1.25rem);
+    font-size: clamp(0.984rem, 0.141vw + 0.956rem, 1.125rem);
     font-weight: 700;
 }
 
@@ -400,7 +432,7 @@ main {
     justify-content: center;
     gap: 1rem;
     font-family: 'Kumbh Sans', sans-serif;
-    font-size: clamp(1.094rem, 0.157vw + 1.062rem, 1.25rem);
+    font-size: clamp(0.984rem, 0.141vw + 0.956rem, 1.125rem);
     font-weight: 700;
     border-radius: 0.625rem;
     background-color: var(--orange);
