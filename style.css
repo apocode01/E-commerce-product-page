@@ -116,6 +116,29 @@ nav {
     align-items: center; /* horizontally center children */
 }
 
+.cart-icon {
+    position: relative;
+}
+
+.cart-items-notification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    background-color: var(--orange);
+    color: var(--white);
+    position: absolute;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    bottom: 62%;
+    left: 32%;
+    border-radius: 1rem;
+}
+
+.cart-items-notification.hidden {
+    display: none;
+}
+
 .cart-menu {
     position: absolute;
     background-color: var(--white);

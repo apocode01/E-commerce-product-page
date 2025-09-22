@@ -23,6 +23,7 @@ previewImgButtons.forEach((previewImageBtn, index) => {
 
 // Product amount selection and cart menu functionality
 
+const cartItemsNotification = document.querySelector(`.cart-items-notification`);
 const decreaseBtn = document.querySelector(`.decreaseBtn`);
 const increaseBtn = document.querySelector(`.increaseBtn`);
 const selectedProductAmountSpan = document.querySelector(`.selected-product-amount`);
@@ -52,8 +53,10 @@ addToCartBtn.addEventListener(`click`, () => {
     productAmount += selectedProductAmount;
     if (productAmount >= 1) {
         productCartWrapper.classList.remove(`hidden`);
+        cartItemsNotification.classList.remove(`hidden`);
         cartEmptyMessage.classList.add(`hidden`);
         let totalProductPricing = (productAmount * 125).toFixed(2);
+        cartItemsNotification.textContent = productAmount;
         productPricingCartInfo.innerHTML = `$125.00 x ${productAmount} <span style="font-weight: 700; color: var(--veryDarkBlue);">$${totalProductPricing}`;
     }
 })
@@ -65,5 +68,6 @@ cartBtn.addEventListener(`click`, () => {
 deleteItemBtn.addEventListener(`click`, () => {
     productAmount = 0;
     productCartWrapper.classList.add(`hidden`);
+    cartItemsNotification.classList.add(`hidden`);
     cartEmptyMessage.classList.remove(`hidden`);
 })
