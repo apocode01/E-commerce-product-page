@@ -21,6 +21,47 @@ previewImgButtons.forEach((previewImageBtn, index) => {
     })
 })
 
+// Image gallery functionality for lightbox
+
+const lightboxOverlay = document.querySelector(`.lightbox-overlay`);
+const mainImagesLightbox = document.querySelectorAll(`.main-image-lightbox`);
+const previewImgButtonsLightbox = document.querySelectorAll(`.previewImgBtn-lightbox`);
+const previewImagesLightbox = document.querySelectorAll(`.preview-image-lightbox`);
+const closeLightboxBtn = document.querySelector(`.closeLightboxBtn`);
+
+mainImages.forEach((img, index) => {
+    img.addEventListener(`click`, () => {
+        lightboxOverlay.classList.remove(`hidden`);
+
+        mainImagesLightbox.forEach(img => {
+            img.classList.add(`hidden`);
+        })
+
+        mainImagesLightbox[index].classList.remove(`hidden`);
+    })
+})
+
+previewImgButtonsLightbox.forEach((previewImageBtnLightbox, index) => {
+    previewImageBtnLightbox.addEventListener(`click`, event => {
+
+        previewImgButtonsLightbox.forEach(btn => {
+            btn.classList.remove(`selected`);
+        });
+
+        previewImageBtnLightbox.classList.add(`selected`);
+
+        mainImagesLightbox.forEach(img => {
+            img.classList.add(`hidden`);
+        })
+
+        mainImagesLightbox[index].classList.remove(`hidden`);
+    })
+})
+
+closeLightboxBtn.addEventListener(`click`, () => {
+    lightboxOverlay.classList.add(`hidden`);
+})
+
 // Product amount selection and cart menu functionality
 
 const cartItemsNotification = document.querySelector(`.cart-items-notification`);
