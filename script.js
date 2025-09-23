@@ -3,21 +3,19 @@
 const mainImages = document.querySelectorAll(`.main-image`);
 const previewImgButtons = document.querySelectorAll(`.previewImgBtn`);
 const previewImages = document.querySelectorAll(`.preview-image`);
+let curImgIndex = 0;
 
 previewImgButtons.forEach((previewImageBtn, index) => {
     previewImageBtn.addEventListener(`click`, event => {
 
-        previewImgButtons.forEach(btn => {
-            btn.classList.remove(`selected`);
-        });
+        previewImgButtons[curImgIndex].classList.remove(`selected`);
 
         previewImageBtn.classList.add(`selected`);
 
-        mainImages.forEach(img => {
-            img.classList.add(`hidden`);
-        })
+        mainImages[curImgIndex].classList.add(`hidden`);
 
         mainImages[index].classList.remove(`hidden`);
+        curImgIndex = index;
     })
 })
 
@@ -28,38 +26,61 @@ const mainImagesLightbox = document.querySelectorAll(`.main-image-lightbox`);
 const previewImgButtonsLightbox = document.querySelectorAll(`.previewImgBtn-lightbox`);
 const previewImagesLightbox = document.querySelectorAll(`.preview-image-lightbox`);
 const closeLightboxBtn = document.querySelector(`.closeLightboxBtn`);
+const previousBtn = document.querySelector(`.previousBtn`);
+const nextBtn = document.querySelector(`.nextBtn`);
+let curImgIndexLightbox = 0;
 
 mainImages.forEach((img, index) => {
     img.addEventListener(`click`, () => {
         lightboxOverlay.classList.remove(`hidden`);
 
-        mainImagesLightbox.forEach(img => {
-            img.classList.add(`hidden`);
-        })
+        mainImagesLightbox[curImgIndexLightbox].classList.add(`hidden`);
+
+        previewImgButtonsLightbox[curImgIndexLightbox].classList.remove(`selected`);
 
         mainImagesLightbox[index].classList.remove(`hidden`);
+        curImgIndexLightbox = index;
+
+        previewImgButtonsLightbox[index].classList.add(`selected`);
     })
 })
 
 previewImgButtonsLightbox.forEach((previewImageBtnLightbox, index) => {
     previewImageBtnLightbox.addEventListener(`click`, event => {
 
-        previewImgButtonsLightbox.forEach(btn => {
-            btn.classList.remove(`selected`);
-        });
+        previewImgButtonsLightbox[curImgIndexLightbox].classList.remove(`selected`);
 
         previewImageBtnLightbox.classList.add(`selected`);
 
-        mainImagesLightbox.forEach(img => {
-            img.classList.add(`hidden`);
-        })
+        mainImagesLightbox[curImgIndexLightbox].classList.add(`hidden`);
 
         mainImagesLightbox[index].classList.remove(`hidden`);
+        curImgIndexLightbox = index;
     })
 })
 
 closeLightboxBtn.addEventListener(`click`, () => {
     lightboxOverlay.classList.add(`hidden`);
+})
+
+previousBtn.addEventListener(`click`, () => {
+    if (curImgIndexLightbox !== 0) {
+        mainImagesLightbox[curImgIndexLightbox].classList.add(`hidden`);
+        previewImgButtonsLightbox[curImgIndexLightbox].classList.remove(`selected`);
+        curImgIndexLightbox--;
+        mainImagesLightbox[curImgIndexLightbox].classList.remove(`hidden`);
+        previewImgButtonsLightbox[curImgIndexLightbox].classList.add(`selected`);
+    }
+})
+
+nextBtn.addEventListener(`click`, () => {
+    if (curImgIndexLightbox !== 3) {
+        mainImagesLightbox[curImgIndexLightbox].classList.add(`hidden`);
+        previewImgButtonsLightbox[curImgIndexLightbox].classList.remove(`selected`);
+        curImgIndexLightbox++;
+        mainImagesLightbox[curImgIndexLightbox].classList.remove(`hidden`);
+        previewImgButtonsLightbox[curImgIndexLightbox].classList.add(`selected`);
+    }
 })
 
 // Product amount selection and cart menu functionality

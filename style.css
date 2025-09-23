@@ -76,6 +76,38 @@ body {
     transition: all 250ms ease;
 }
 
+.previousBtn {
+    position: absolute;
+    top: calc(50% - 25px);
+    left: -25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--white);
+    cursor: pointer;
+    padding: 1rem;
+    width: 3.125rem;
+    height: 3.125rem;
+}
+
+.nextBtn {
+    position: absolute;
+    top: calc(50% - 25px);
+    right: -25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--white);
+    cursor: pointer;
+    padding: 1rem;
+    width: 3.125rem;
+    height: 3.125rem;
+}
+
 .main-image-lightbox {
     max-width: 100%;
     border-radius: 1rem;
@@ -89,16 +121,24 @@ body {
     gap: 2rem;
 }
 
-.mainImgBtn-lightbox, .previewImgBtn-lightbox {
+.mainImgDiv, .previewImgBtn-lightbox {
     border-radius: 1rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border: none;
     background-color: transparent;
-    cursor: pointer;
     opacity: 1;
     width: fit-content;
+}
+
+.mainImgDiv {
+    position: relative;
+}
+
+.previewImgBtn-lightbox {
+    cursor: pointer;
 }
 
 .main-image-lightbox.hidden {
@@ -402,16 +442,12 @@ main {
 .main-image {
     max-width: 100%;
     border-radius: 1rem;
-    outline: 2px solid transparent;
-    transition: outline 150ms ease-out;
-    transition: opacity 150ms ease-out;
+    transition: opacity 250ms ease-out;
 }
 
 .main-image:hover {
-    outline: 2px solid var(--orange);
-    opacity: 80%;
+    opacity: 90%;
     transition: opacity 250ms ease;
-    transition: outline 250ms ease;
 }
 
 .preview-images {
