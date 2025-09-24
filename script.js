@@ -26,8 +26,8 @@ const mainImagesLightbox = document.querySelectorAll(`.main-image-lightbox`);
 const previewImgButtonsLightbox = document.querySelectorAll(`.previewImgBtn-lightbox`);
 const previewImagesLightbox = document.querySelectorAll(`.preview-image-lightbox`);
 const closeLightboxBtn = document.querySelector(`.closeLightboxBtn`);
-const previousBtn = document.querySelector(`.previousBtn`);
-const nextBtn = document.querySelector(`.nextBtn`);
+const previousBtnLightbox = document.querySelector(`.previousBtnLightbox`);
+const nextBtnLightbox = document.querySelector(`.nextBtnLightbox`);
 let curImgIndexLightbox = 0;
 
 mainImages.forEach((img, index) => {
@@ -63,7 +63,7 @@ closeLightboxBtn.addEventListener(`click`, () => {
     lightboxOverlay.classList.add(`hidden`);
 })
 
-previousBtn.addEventListener(`click`, () => {
+previousBtnLightbox.addEventListener(`click`, () => {
     if (curImgIndexLightbox !== 0) {
         mainImagesLightbox[curImgIndexLightbox].classList.add(`hidden`);
         previewImgButtonsLightbox[curImgIndexLightbox].classList.remove(`selected`);
@@ -73,7 +73,7 @@ previousBtn.addEventListener(`click`, () => {
     }
 })
 
-nextBtn.addEventListener(`click`, () => {
+nextBtnLightbox.addEventListener(`click`, () => {
     if (curImgIndexLightbox !== 3) {
         mainImagesLightbox[curImgIndexLightbox].classList.add(`hidden`);
         previewImgButtonsLightbox[curImgIndexLightbox].classList.remove(`selected`);
