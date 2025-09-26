@@ -1,4 +1,4 @@
-// Image gallery functionality
+// Image gallery functionality for tablet-desktop
 
 const mainImages = document.querySelectorAll(`.main-image`);
 const previewImgButtons = document.querySelectorAll(`.previewImgBtn`);
@@ -17,6 +17,31 @@ previewImgButtons.forEach((previewImageBtn, index) => {
         mainImages[index].classList.remove(`hidden`);
         curImgIndex = index;
     })
+})
+
+// Image gallery functionality for mobile
+
+const previousBtn = document.querySelector(`.previousBtn`);
+const nextBtn = document.querySelector(`.nextBtn`);
+
+previousBtn.addEventListener(`click`, () => {
+    if (curImgIndex !== 0) {
+        mainImages[curImgIndex].classList.add(`hidden`);
+        previewImgButtons[curImgIndex].classList.remove(`selected`);
+        curImgIndex--;
+        mainImages[curImgIndex].classList.remove(`hidden`);
+        previewImgButtons[curImgIndex].classList.add(`selected`);
+    }
+})
+
+nextBtn.addEventListener(`click`, () => {
+    if (curImgIndex !== 3) {
+        mainImages[curImgIndex].classList.add(`hidden`);
+        previewImgButtons[curImgIndex].classList.remove(`selected`);
+        curImgIndex++;
+        mainImages[curImgIndex].classList.remove(`hidden`);
+        previewImgButtons[curImgIndex].classList.add(`selected`);
+    }
 })
 
 // Image gallery functionality for lightbox

@@ -20,10 +20,6 @@
     padding: 0;
 }
 
-.wrapper {
-    overflow-x: hidden;
-}
-
 body {
     font-family: 'Kumbh Sans', sans-serif;
     padding: 2rem 2rem 0 2rem;
@@ -723,6 +719,7 @@ main {
     }
     
     .wrapper {
+        overflow-x: hidden;
         width: 100%;
     }
 
