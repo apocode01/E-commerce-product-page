@@ -115,12 +115,13 @@ const decreaseBtn = document.querySelector(`.decreaseBtn`);
 const increaseBtn = document.querySelector(`.increaseBtn`);
 const selectedProductAmountSpan = document.querySelector(`.selected-product-amount`);
 const addToCartBtn = document.querySelector(`.add-to-cart-btn`);
-const productCartWrapper = document.querySelector(`.product-cart-wrapper`);
-const cartEmptyMessage = document.querySelector(`.cart-empty-message`);
-const productPricingCartInfo = document.querySelector(`.product-pricing-cart-info`);
+const productCartWrapper = document.querySelectorAll(`.product-cart-wrapper`);
+const cartEmptyMessage = document.querySelectorAll(`.cart-empty-message`);
+const productPricingCartInfo = document.querySelectorAll(`.product-pricing-cart-info`);
 const cartBtn = document.querySelector(`.cartBtn`);
 const cartMenu = document.querySelector(`.cart-menu`);
-const deleteItemBtn = document.querySelector(`.deleteItemBtn`);
+const cartMenuMobile = document.querySelector(`.cart-menu-mobile`);
+const deleteItemBtn = document.querySelectorAll(`.deleteItemBtn`);
 let selectedProductAmount = 0;
 let productAmount = 0;
 
@@ -139,22 +140,27 @@ increaseBtn.addEventListener(`click`, () => {
 addToCartBtn.addEventListener(`click`, () => {
     productAmount += selectedProductAmount;
     if (productAmount >= 1) {
-        productCartWrapper.classList.remove(`hidden`);
+        productCartWrapper.forEach(pcw => pcw.classList.remove(`hidden`));
         cartItemsNotification.classList.remove(`hidden`);
-        cartEmptyMessage.classList.add(`hidden`);
+        cartEmptyMessage.forEach(cem => cem.classList.add(`hidden`));
         let totalProductPricing = (productAmount * 125).toFixed(2);
         cartItemsNotification.textContent = productAmount;
-        productPricingCartInfo.innerHTML = `$125.00 x ${productAmount} <span style="font-weight: 700; color: var(--veryDarkBlue);">$${totalProductPricing}`;
+        productPricingCartInfo.forEach(ppci => {
+            ppci.innerHTML = `$125.00 x ${productAmount} <span style="font-weight: 700; color: var(--veryDarkBlue);">$${totalProductPricing}`;
+        });
     }
 })
 
 cartBtn.addEventListener(`click`, () => {
     cartMenu.classList.toggle(`shown`);
+    cartMenuMobile.classList.toggle(`shown`);
 })
 
-deleteItemBtn.addEventListener(`click`, () => {
-    productAmount = 0;
-    productCartWrapper.classList.add(`hidden`);
-    cartItemsNotification.classList.add(`hidden`);
-    cartEmptyMessage.classList.remove(`hidden`);
+deleteItemBtn.forEach(dib => {
+    dib.addEventListener(`click`, () => {
+        productAmount = 0;
+        productCartWrapper.forEach(pcw => pcw.classList.add(`hidden`));
+        cartItemsNotification.classList.add(`hidden`);
+        cartEmptyMessage.forEach(cem => cem.classList.remove(`hidden`));
+    })
 })
