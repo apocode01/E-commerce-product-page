@@ -164,3 +164,36 @@ deleteItemBtn.forEach(dib => {
         cartEmptyMessage.forEach(cem => cem.classList.remove(`hidden`));
     })
 })
+
+// Mobile menu functionality
+
+const mobileMenuBtn = document.querySelector(`.mobileMenuBtn`);
+const mobileMenuOverlay = document.querySelector(`.mobile-menu-overlay`);
+const navCatergories = document.querySelector(`.nav-catergories`);
+const closeMobileMenuBtn = document.querySelector(`.closeMobileMenuBtn`);
+
+mobileMenuBtn.addEventListener('click', () => {
+    if (navCatergories.classList.contains(`closed`)) {
+        navCatergories.classList.replace(`closed`, `open`);
+    }
+    else navCatergories.classList.add(`open`);
+    mobileMenuOverlay.classList.remove(`hidden`);
+    cartMenu.classList.remove(`shown`);
+    cartMenuMobile.classList.remove(`shown`);
+})
+
+const mq = window.matchMedia("(max-width: calc(50rem - 1px))");
+mq.addEventListener("change", (e) => {
+    if (!e.matches) {
+        navCatergories.classList.remove("closed", "open");
+        mobileMenuOverlay.classList.add("hidden");
+    }
+    else {
+        lightboxOverlay.classList.add(`hidden`);
+    }
+});
+
+closeMobileMenuBtn.addEventListener(`click`, () => {
+    navCatergories.classList.replace(`open`, `closed`);
+    mobileMenuOverlay.classList.add(`hidden`);
+})

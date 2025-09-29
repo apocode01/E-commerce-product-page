@@ -38,8 +38,8 @@ body {
     justify-content: center;
     top: 0;            
     left: 0;           
-    width: 100vw;     
-    height: 100vh;     
+    right: 0;
+    bottom: 0;       
     background-color: var(--transparentBlack);
     z-index: 1;
 }
@@ -232,6 +232,27 @@ nav {
 .nav-catergories a:hover::after {
     transform: scaleX(1);
     transition: transform 250ms ease;
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 0;            
+    left: 0;           
+    right: 0;
+    bottom: 0;    
+    background-color: var(--transparentBlack);
+    z-index: 5;
+    transition: all 250ms ease;
+}
+
+.mobile-menu-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 250ms ease-out;
 }
 
 .cart-and-profile {
@@ -743,7 +764,65 @@ main {
     }
 
     .nav-catergories {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        transform: translateX(-100%);
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 70%;
+        background: var(--white);
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+        padding: calc((clamp(2rem, 9.143vw - 0.571rem, 4rem) - 1rem) / 2 + 1rem) 2rem;
+        z-index: 6; 
+    }
+
+    .nav-catergories.closed {
+        transition: all 250ms ease-out;
+    }
+
+    .nav-catergories.open {
+        transform: translateX(0%);
+        transition: all 250ms ease;
+    }
+
+    .nav-catergories a {
+        text-decoration: none;
+        color: var(--veryDarkBlue);
+        transition: color 250ms ease-out;
+        display: inline-block;
+        position: relative;
+        font-size: clamp(1.25rem, 2.5vw + 0.75rem, 2rem);
+        font-weight: 700;
+    }
+
+    .nav-catergories a::after {
         display: none;
+    }
+
+    .nav-catergories a:hover {
+        color: var(--orange);
+        transition: color 250ms ease;
+    }
+
+    .closeMobileMenuBtn {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        width: fit-content;
+    }
+
+    .closeMobileMenuBtn path{
+        transition: all 250ms ease-out;
+    }
+
+    .closeMobileMenuBtn:hover path {
+        fill: var(--black);
+        transition: all 250ms ease;
     }
 
     .cart-and-profile {
@@ -752,8 +831,8 @@ main {
 
     .cart-menu {
         position: fixed;
-        top: 5rem;         /* adjust as needed */
-        right: 1rem;       /* always distance from right edge */
+        top: 5rem;       
+        right: 1rem; 
     }
 
     .avatar {
@@ -832,6 +911,10 @@ main {
         border-bottom: none;
     }
 
+    .nav-catergories {
+        padding: calc((clamp(2rem, 9.143vw - 0.571rem, 4rem) - 1rem) / 2 + 1rem) 1rem;
+    }
+
     .product-images {
         padding: 0;
     }
@@ -849,7 +932,7 @@ main {
 
     .product-purchace {
         display: grid;
-        grid-auto-rows: 1fr; /* each row gets same height as tallest */
+        grid-auto-rows: 1fr;
         gap: 1rem;
     }
 
@@ -869,7 +952,7 @@ main {
 
     .cart-menu-mobile {
         position: absolute;
-        top: 50%;              
+        top: 42%;              
         left: 50%;           
         transform: translate(-50%, -50%); 
         width: 95%;             
