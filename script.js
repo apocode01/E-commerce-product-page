@@ -169,7 +169,7 @@ deleteItemBtn.forEach(dib => {
 
 const mobileMenuBtn = document.querySelector(`.mobileMenuBtn`);
 const mobileMenuOverlay = document.querySelector(`.mobile-menu-overlay`);
-const navCatergories = document.querySelector(`.nav-catergories`);
+const navCatergories = document.querySelector(`.nav-categories`);
 const closeMobileMenuBtn = document.querySelector(`.closeMobileMenuBtn`);
 
 mobileMenuBtn.addEventListener('click', () => {
