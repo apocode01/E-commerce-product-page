@@ -5,7 +5,7 @@ const previewImgButtons = document.querySelectorAll(`.previewImgBtn`);
 let curImgIndex = 0;
 
 previewImgButtons.forEach((previewImageBtn, index) => {
-    previewImageBtn.addEventListener(`click`, event => {
+    previewImageBtn.addEventListener(`click`, () => {
 
         previewImgButtons[curImgIndex].classList.remove(`selected`);
 
@@ -69,7 +69,7 @@ mainImages.forEach((img, index) => {
 })
 
 previewImgButtonsLightbox.forEach((previewImageBtnLightbox, index) => {
-    previewImageBtnLightbox.addEventListener(`click`, event => {
+    previewImageBtnLightbox.addEventListener(`click`, () => {
 
         previewImgButtonsLightbox[curImgIndexLightbox].classList.remove(`selected`);
 
