@@ -2,7 +2,6 @@
 
 const mainImages = document.querySelectorAll(`.main-image`);
 const previewImgButtons = document.querySelectorAll(`.previewImgBtn`);
-const previewImages = document.querySelectorAll(`.preview-image`);
 let curImgIndex = 0;
 
 previewImgButtons.forEach((previewImageBtn, index) => {
@@ -49,7 +48,6 @@ nextBtn.addEventListener(`click`, () => {
 const lightboxOverlay = document.querySelector(`.lightbox-overlay`);
 const mainImagesLightbox = document.querySelectorAll(`.main-image-lightbox`);
 const previewImgButtonsLightbox = document.querySelectorAll(`.previewImgBtn-lightbox`);
-const previewImagesLightbox = document.querySelectorAll(`.preview-image-lightbox`);
 const closeLightboxBtn = document.querySelector(`.closeLightboxBtn`);
 const previousBtnLightbox = document.querySelector(`.previousBtnLightbox`);
 const nextBtnLightbox = document.querySelector(`.nextBtnLightbox`);
@@ -143,7 +141,7 @@ addToCartBtn.addEventListener(`click`, () => {
         productCartWrapper.forEach(pcw => pcw.classList.remove(`hidden`));
         cartItemsNotification.classList.remove(`hidden`);
         cartEmptyMessage.forEach(cem => cem.classList.add(`hidden`));
-        let totalProductPricing = (productAmount * 125).toFixed(2);
+        const totalProductPricing = (productAmount * 125).toFixed(2);
         cartItemsNotification.textContent = productAmount;
         productPricingCartInfo.forEach(ppci => {
             ppci.innerHTML = `$125.00 x ${productAmount} <span style="font-weight: 700; color: var(--veryDarkBlue);">$${totalProductPricing}`;
